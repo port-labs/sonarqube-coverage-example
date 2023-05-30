@@ -20,7 +20,7 @@ Follow the example guide on how to [create a Port webhook](https://docs.getport.
 Place this example `.gitlab-ci.yml` file in your project's root folder
 
 ### Gitlab CI Variables
-To interact with Port using Gitlab CI Pipeline, you will first need to define your Port credentials [as variables for your pipeline](https://docs.gitlab.com/ee/ci/variables/index.html#define-a-cicd-variable-in-the-ui). Then, pass the defined variables to your ci pipeline script. This tutorial assumes that the id of your `repository` entities in Port corresponds to the actual name of your repository.
+To interact with Port using Gitlab CI Pipeline, you will first need to define your Port credentials [as variables for your pipeline](https://docs.gitlab.com/ee/ci/variables/index.html#define-a-cicd-variable-in-the-ui). Then, pass the defined variables to your ci pipeline script. This tutorial requires that the identifiers of your `repository` entities in Port corresponds to the actual name of your repository. This enables us to relate the `sonarqubeMetric` blueprint with the `repository` blueprint.
 
 The list of the required variables to run this pipeline are:
 - `PROJECT_KEY`
@@ -28,8 +28,49 @@ The list of the required variables to run this pipeline are:
 - `SONARQUBE_URL`
 - `SONARQUBE_TOKEN`
 
+
 Follow the documentation on how to [obatin a SonarQube token](https://docs.sonarqube.org/latest/user-guide/user-account/generating-and-using-tokens/). 
 
+### Example SonarQube Metric Payload
+Below is an example payload from the SonarQube Web API. It retrieves all the metrics related to a particular component.
+
+```json showLineNumbers
+{
+    "component": {
+        "id": "AYhnRZt5Led4AO_hsfL_",
+        "key": "PeyGis_Chatbot_For_Social_Media_Transaction",
+        "name": "Chatbot_For_Social_Media_Transaction",
+        "qualifier": "TRK",
+        "measures": [
+            {
+                "metric": "bugs",
+                "value": "6",
+                "bestValue": false
+            },
+            {
+                "metric": "code_smells",
+                "value": "214",
+                "bestValue": false
+            },
+            {
+                "metric": "vulnerabilities",
+                "value": "1",
+                "bestValue": false
+            },
+            {
+                "metric": "sqale_debt_ratio",
+                "value": "0.6",
+                "bestValue": false
+            },
+            {
+                "metric": "sqale_index",
+                "value": "1427",
+                "bestValue": false
+            }
+        ]
+    }
+}
+```
 ### Package Entity Created
 ![Metric Entity Created](./assets/metric.PNG "Metric Entity Created")
 
