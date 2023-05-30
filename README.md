@@ -34,3 +34,5 @@ Follow the documentation on how to [obatin a SonarQube token](https://docs.sonar
 ### Package Entity Created
 ![Metric Entity Created](./assets/metric.PNG "Metric Entity Created")
 
+### Python Resources
+This project contains [example python resources](./python-tutorial/) that can be replaced with the shell script if you're using Python programming.

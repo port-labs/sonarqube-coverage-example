@@ -1,3 +1,5 @@
+image: python:3.8
+
 variables:
   WEBHOOK_URL: $WEBHOOK_URL
   PROJECT_KEY: $PROJECT_KEY
@@ -8,14 +10,11 @@ stages:
   - build
 
 ingest_sonarqube_metric_to_port_job:
-  image: ubuntu:latest
   stage: build
-  only:
-    - main
-    - dev
   before_script:
-    - apt-get update
-    - apt-get install -y curl jq
+    - python -m pip install --upgrade pip
+    - pip install --upgrade setuptools
+    - pip install --no-cache-dir -r requirements.txt
   script:
     - echo "Uploading SonarQube Metrics to Port"
-    - sh ingest.sh
+    - python ingest.py
