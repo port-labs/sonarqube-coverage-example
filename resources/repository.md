@@ -1,8 +1,8 @@
 ```json showLineNumbers
 {
-  "identifier": "service",
-  "title": "Service",
-  "icon": "Service",
+  "identifier": "repository",
+  "title": "Repository",
+  "icon": "Git",
   "schema": {
     "properties": {
       "description": {

@@ -16,7 +16,7 @@
                     "bestValue": "item.bestValue"
                 },
                 "relations": {
-                    "service": ".body.component.key"
+                    "repository": ".body.component.name"
                 }
             }
         }

@@ -20,9 +20,9 @@
   "mirrorProperties": {},
   "calculationProperties": {},
   "relations": {
-    "microservice": {
-      "title": "Service",
-      "target": "microservice",
+    "repository": {
+      "title": "Repository",
+      "target": "repository",
       "required": true,
       "many": false
     }
