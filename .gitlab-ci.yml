@@ -1,0 +1,20 @@
+image: python:3.8
+
+variables:
+  WEBHOOK_URL: $WEBHOOK_URL
+  PROJECT_KEY: $PROJECT_KEY
+  SONARQUBE_URL: $SONARQUBE_URL
+  SONARQUBE_TOKEN: $SONARQUBE_TOKEN
+
+stages:
+  - build
+
+ingest_sonarqube_metric_to_port_job:
+  stage: build
+  before_script:
+    - python -m pip install --upgrade pip
+    - pip install --upgrade setuptools
+    - pip install --no-cache-dir -r requirements.txt
+  script:
+    - echo "Uploading SonarQube Metrics to Port"
+    - python ingest.py
